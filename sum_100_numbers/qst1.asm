@@ -1,5 +1,5 @@
-; Escreva um programa que calcule a soma dos 100 primeiros números inteiros positivos.
-; O resultado deverá ser armazenado no registrador eax e também deverá ser exibido na tela.
+; Escreva um programa que calcule a soma dos 100 primeiros numeros inteiros positivos.
+; O resultado deve ser armazenado no registrador eax e ser exibido na tela.
 
 .686
 .model flat, stdcall
@@ -14,18 +14,22 @@ include \masm32\macros\macros.asm
 
 .code
 start:
+    ; int acumulador = 0;
+    ; for (int i=1; i<=100; ++i) {acumulador += i;}
+    ; acumulador = EAX 
+    ; i = ECX
     ; Inicializa os registradores
-    xor eax, eax ; Zera o registrador EAX (será utilizado para soma)
-    mov ecx, 1 ; Inicializa o registrador ECX (será utilizado como contador)
+    xor eax, eax ; Zera o registrador EAX (utilizado para soma)
+    mov ecx, 1 ; Inicializa o registrador ECX (utilizado como contador)
 
 soma_loop:
-    add eax, ecx ; Soma o valor de ecx a eax
+    add eax, ecx ; Soma o valor de ECX a EAX
     inc ecx ; Incrementa o contador
-    cmp ecx, 100 ; Verifica se ecx chegou a 100
-    jle soma_loop ; Se ecx <= 100, continua o loop
+    cmp ecx, 100 ; Verifica se ECX chegou a 100
+    jbe soma_loop ; Se ecx <= 100, continua o loop
 
     printf("Soma dos 100 primeiros numeros: %d\n", eax) ; Exibe o valor de eax na tela
 
     invoke ExitProcess, 0 ; Finaliza o programa
-
+    
 end start
