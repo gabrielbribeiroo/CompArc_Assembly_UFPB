@@ -1,5 +1,5 @@
-; Escreva um programa que leia uma constante numérica inteira e, em seguida, escreva na tela se o
-; número é par ou ímpar.
+; Escreva um programa que leia uma constante numerica inteira e, em seguida, escreva na tela a paridade
+; do numero.
 
 .686
 .model flat, stdcall
@@ -10,25 +10,30 @@ include \masm32\include\kernel32.inc
 include \masm32\include\msvcrt.inc
 includelib \masm32\lib\kernel32.lib
 includelib \masm32\lib\msvcrt.lib
-include \masm32\macros\macros.asm
 
 .data
-    num dd 5; Constante numérica
-    
+    msg_par db "O numero eh par!", 0Ah, 0H
+    msg_impar db "O numero eh impar!", 0Ah, 0H
+    num dd 5 ; Constante numerica
+
 .code
 start:
-    mov eax, num ; Carrega num no registrador eax
-    test eax, 1 ; Faz um AND bit a bit de EAX com 1. Se o resultado for 0, o número é par.
-    jz par ; se o bit menos for significativo for 0 (resultado da operação AND), salta para número par
+    ; Verifica a paridade do numero
+    mov eax, [num] ; Carrega 'num' no registrador EAX
+    and eax, 1 ; Faz um AND bit a bit de EAX com 1. Se o resultado for 0, o numero eh par
+    cmp eax, 0 
+    je par ; Se o bit menos significativo for 0, salta para 'par'
 
-impar:
-    printf("O numero %d eh IMPAR!\n", eax)
-    jmp fim ; Pula para o final do programa
+    ; Numero impar
+    invoke crt_printf, addr msg_impar ; Exibe a mensagem de numero impar
+    jmp fim ; Pula para o final
 
 par:
-    printf("O numero %d eh PAR!\n", eax)
+    ; Numero par
+    invoke crt_printf, addr msg_par ; Exibe a mensagem de numero par
 
 fim:
-    invoke ExitProcess, 0 ; Finaliza o programa
+    ; Finaliza o programa
+    invoke ExitProcess, 0
 
 end start
