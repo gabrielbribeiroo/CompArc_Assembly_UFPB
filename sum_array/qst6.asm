@@ -23,11 +23,11 @@ start:
     xor eax, eax ; Zera EAX (será usado para a soma)
     xor ecx, ecx ; Zera ECX (contador de loop)
 
-soma_loop:
+sum_loop:
     add ax, [arr + ecx*2] ; Soma o valor de cada posição do array a AX
     inc ecx ; Incrementa o contador
     cmp ecx, 10 ; Verifica se já somou todos os 10 números
-    jne soma_loop ; Se não terminou, continua o loop
+    jne sum_loop ; Se não terminou, continua o loop
     mov [sum], eax ; Move a soma final para a variável 'sum'
 
     printf("Soma dos 10 numeros: %d\n", [sum]) ; Exibe o resultado da soma
