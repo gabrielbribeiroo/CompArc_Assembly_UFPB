@@ -14,7 +14,6 @@ include \masm32\macros\macros.asm
 
 .data
     arr dw 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ; Array inicializado com 10 números (2 bytes cada)
-    arr_tam dd 10 ; Variável para armazenar o tamanho do array
     sum dd 0 ; Variável para armazenar a soma final
 
 .code 
