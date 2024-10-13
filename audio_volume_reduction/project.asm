@@ -1,3 +1,4 @@
+
 .686
 .model flat, stdcall
 option casemap:none
@@ -27,9 +28,9 @@ includelib \masm32\lib\masm32.lib
     outputHandle dd 0
     
     ; Mensagens para o usuario
-    mensagem1 db "Arquivo de entrada:", 0Ah, 0h
-    mensagem2 db "Arquivo de saida: ", 0Ah, 0h
-    mensagem3 db "Valor entre 1 a 10", 0h
+    mensagem1 db "Digite o nome do arquivo de entrada: ", 0h, 0h
+    mensagem2 db "Digite o nome do arquivo de saida: ", 0h, 0h
+    mensagem3 db "Digite a constante de reducao de volume (1 a 10): ", 0h
     
     ; Variáveis para guardar o conteúdo escrito pelo usuário
     arquivo_string1 db 50 dup(0)
@@ -47,7 +48,6 @@ main:
 
     ; Lê o nome do arquivo de entrada
     invoke WriteConsole, outputHandle, addr mensagem1, sizeof mensagem1, addr console_count, NULL
-
     invoke ReadConsole, inputHandle, addr arquivo_string1, sizeof arquivo_string1, addr console_count, NULL
 
     ; Chama uma função para remover o caracter CR
@@ -56,7 +56,6 @@ main:
 
     ; Lê o nome do arquivo de saída
     invoke WriteConsole, outputHandle, addr mensagem2, sizeof mensagem1, addr console_count, NULL
-
     invoke ReadConsole, inputHandle, addr arquivo_string2, sizeof arquivo_string1, addr console_count, NULL
 
     ; Chama uma função para remover o caracter CR
@@ -112,6 +111,7 @@ remover_caracter_cr:
     mov ebp, esp
     sub esp, 4
     mov esi, DWORD PTR[ebp+8] ; Armazenar apontador da string em esi
+    
 proximo:
     mov al, [esi] ; Mover caractere atual para al
     inc esi ; Apontar para o proximo caractere
