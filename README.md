@@ -9,3 +9,7 @@ This repository contains some exercises from the Computer Architecture disciplin
 
 ## Tools
 - **MASM-32**: Microsoft Macro Assembler (Masm32) toolkit for assembling and linking Assembly code on Intel processors.
+
+<div style="display: inline_block"><cbr> 
+  <img align = "top" alt = "gabrielbribeiroo_ASM" height = "50" width = "50" src="https://img.shields.io/badge/assembly-%23000000.svg?style=for-the-badge&logo=assemblyscript&logoColor=white" />
+</div>
