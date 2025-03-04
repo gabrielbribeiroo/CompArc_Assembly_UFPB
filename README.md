@@ -13,3 +13,6 @@ This repository contains some exercises from the Computer Architecture disciplin
 <div style="display: inline_block"><cbr> 
   <img align = "top" alt = "gabrielbribeiroo_ASM" height = "50" width = "50" src="https://img.shields.io/badge/assembly-%23000000.svg?style=for-the-badge&logo=assemblyscript&logoColor=white" />
 </div>
+
+## License
+This project is licensed under the MIT License.
